@@ -134,10 +134,10 @@ open class SVGSerializer {
         result += transformToSVG(image.place)
         if image.src.contains("memory://") {
             if let data = image.base64encoded(type: Image.ImageRepresentationType.PNG) {
-                result += " xlink:href=\"data:image/png;base64,\(data)\""
+                result += "href=\"data:image/png;base64,\(data)\""
             }
         } else {
-            result += " xlink:href=\"\(image.src)\" "
+            result += "href=\"\(image.src)\" "
         }
         if let bounds = image.bounds {
             result += " width=\"\(String(bounds.w))\" height=\"\(String(bounds.h))\" "

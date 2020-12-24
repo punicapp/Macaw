@@ -445,7 +445,7 @@ open class SVGParser {
         }
 
         var parentPattern: UserSpacePattern?
-        if let link = element.allAttributes["xlink:href"]?.text.replacingOccurrences(of: " ", with: ""),
+        if let link = element.allAttributes["href"]?.text.replacingOccurrences(of: " ", with: ""),
            link.hasPrefix("#") {
             let id = link.replacingOccurrences(of: "#", with: "")
             parentPattern = defPatterns[id]
@@ -1019,7 +1019,7 @@ open class SVGParser {
                                 opacity: Double,
                                 pos: Transform = Transform(),
                                 clip: Locus?) -> Image? {
-        guard let element = image.element, let link = element.allAttributes["xlink:href"]?.text else {
+        guard let element = image.element, let link = element.allAttributes["href"]?.text else {
             return .none
         }
         let position = pos.move(dx: getDoubleValue(element, attribute: "x") ?? 0,
@@ -1286,7 +1286,7 @@ open class SVGParser {
     fileprivate func parseUse(_ use: XMLIndexer,
                               groupStyle: [String: String] = [:],
                               place: Transform = .identity) throws -> Node? {
-        guard let element = use.element, let link = element.allAttributes["xlink:href"]?.text else {
+        guard let element = use.element, let link = element.allAttributes["href"]?.text else {
             return .none
         }
         var id = link
@@ -1476,7 +1476,7 @@ open class SVGParser {
         }
 
         var parentGradient: Gradient?
-        if let link = element.allAttributes["xlink:href"]?.text.replacingOccurrences(of: " ", with: ""),
+        if let link = element.allAttributes["href"]?.text.replacingOccurrences(of: " ", with: ""),
            link.hasPrefix("#") {
 
             let id = link.replacingOccurrences(of: "#", with: "")
@@ -1538,7 +1538,7 @@ open class SVGParser {
         }
 
         var parentGradient: Gradient?
-        if let link = element.allAttributes["xlink:href"]?.text.replacingOccurrences(of: " ", with: ""),
+        if let link = element.allAttributes["href"]?.text.replacingOccurrences(of: " ", with: ""),
            link.hasPrefix("#") {
 
             let id = link.replacingOccurrences(of: "#", with: "")
